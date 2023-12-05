@@ -43,8 +43,25 @@ function cal_KgMg(Nodes, Elements, Materials, list_DOF)
             node_4 = Elements[i_e,5][4]
             node_5 = Elements[i_e,5][5]
             node_6 = Elements[i_e,5][6]
+            x = zeros(6)
+            y = zeros(6)
+            x[1] = Nodes[node_1,2]
+            y[1] = Nodes[node_1,3]
+            x[2] = Nodes[node_2,2]
+            y[2] = Nodes[node_2,3]
+            x[3] = Nodes[node_3,2]
+            y[3] = Nodes[node_3,3]
+            x[4] = Nodes[node_4,2]
+            y[4] = Nodes[node_4,3]
+            x[5] = Nodes[node_5,2]
+            y[5] = Nodes[node_5,3]
+            x[6] = Nodes[node_6,2]
+            y[6] = Nodes[node_6,3]
+            i_mat = Elements[i_e,3]
+            E = Materials[i_mat,2]
+            ν = Materials[i_mat,3]
+            ρ = Materials[i_mat,4]
             
-
         end
         println("\nElement ", i_e, ":")
         println(node_1, " --> ", node_2, ": E = ", E, ", rho = ", rho, ", v = ", v, ", h = ", h)
