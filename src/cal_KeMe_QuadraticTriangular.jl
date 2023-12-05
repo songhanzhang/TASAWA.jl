@@ -113,6 +113,6 @@ function cal_KeMe_QuadraticTriangular(x,y,E,ν,ρ)
         end
     end
 
-    return Ke, Me
+    return K1e, K2e, K3e, Me
 
 end
