@@ -37,12 +37,12 @@ function cal_KgMg(Nodes, Elements, Materials, list_DOF)
             K3g[DOFs,DOFs] = K3g[DOFs,DOFs] + K3e
             Mg[DOFs,DOFs]  = Mg[DOFs,DOFs]  + Me
         elseif Elements[i_e,2] == "2D_QuadTriangle"
-            node_1 = Elements[i_e,5][1]
-            node_2 = Elements[i_e,5][2]
-            node_3 = Elements[i_e,5][3]
-            node_4 = Elements[i_e,5][4]
-            node_5 = Elements[i_e,5][5]
-            node_6 = Elements[i_e,5][6]
+            node_1 = Int(Elements[i_e,5][1])
+            node_2 = Int(Elements[i_e,5][2])
+            node_3 = Int(Elements[i_e,5][3])
+            node_4 = Int(Elements[i_e,5][4])
+            node_5 = Int(Elements[i_e,5][5])
+            node_6 = Int(Elements[i_e,5][6])
             x = zeros(6)
             y = zeros(6)
             x[1] = Nodes[node_1,2]
@@ -58,14 +58,37 @@ function cal_KgMg(Nodes, Elements, Materials, list_DOF)
             x[6] = Nodes[node_6,2]
             y[6] = Nodes[node_6,3]
             i_mat = Elements[i_e,3]
-            E = Materials[i_mat,2]
-            ρ = Materials[i_mat,3]
-            ν = Materials[i_mat,4]
-
+            E = Materials[i_mat,2][1]
+            ρ = Materials[i_mat,2][2]
+            ν = Materials[i_mat,2][3]
+            (K1e, K2e, K3e, Me) = cal_KeMe_QuadraticTriangular(x,y,E,ρ,ν)
+            DOF_1  = Int(findall(isequal(node_1+0.1),list_DOF[:,2])[1])
+            DOF_2  = Int(findall(isequal(node_1+0.2),list_DOF[:,2])[1])
+            DOF_3  = Int(findall(isequal(node_1+0.3),list_DOF[:,2])[1])
+            DOF_4  = Int(findall(isequal(node_2+0.1),list_DOF[:,2])[1])
+            DOF_5  = Int(findall(isequal(node_2+0.2),list_DOF[:,2])[1])
+            DOF_6  = Int(findall(isequal(node_2+0.3),list_DOF[:,2])[1])
+            DOF_7  = Int(findall(isequal(node_3+0.1),list_DOF[:,2])[1])
+            DOF_8  = Int(findall(isequal(node_3+0.2),list_DOF[:,2])[1])
+            DOF_9  = Int(findall(isequal(node_3+0.3),list_DOF[:,2])[1])
+            DOF_10 = Int(findall(isequal(node_4+0.1),list_DOF[:,2])[1])
+            DOF_11 = Int(findall(isequal(node_4+0.2),list_DOF[:,2])[1])
+            DOF_12 = Int(findall(isequal(node_4+0.3),list_DOF[:,2])[1])
+            DOF_13 = Int(findall(isequal(node_5+0.1),list_DOF[:,2])[1])
+            DOF_14 = Int(findall(isequal(node_5+0.2),list_DOF[:,2])[1])
+            DOF_15 = Int(findall(isequal(node_5+0.3),list_DOF[:,2])[1])
+            DOF_16 = Int(findall(isequal(node_6+0.1),list_DOF[:,2])[1])
+            DOF_17 = Int(findall(isequal(node_6+0.2),list_DOF[:,2])[1])
+            DOF_18 = Int(findall(isequal(node_6+0.3),list_DOF[:,2])[1])
+            DOFs = [DOF_1,DOF_2,DOF_3,DOF_4,DOF_5,DOF_6,DOF_7,DOF_8,DOF_9,DOF_10,DOF_11,DOF_12,DOF_13,DOF_14,DOF_15,DOF_16,DOF_17,DOF_18]
+            K1g[DOFs, DOFs] += K1e
+            K2g[DOFs, DOFs] += K2e
+            K3g[DOFs, DOFs] += K3e
+            Mg[DOFs, DOFs] += Me
+            println("\nElement ", i_e, ":")
+            println("[", node_1, ",", node_2, ",", node_3, ",", node_4, ",", node_5, ",", node_6, "]: E = ", E, ", rho = ", ρ, ", v = ", ν)
         end
-        println("\nElement ", i_e, ":")
-        println(node_1, " --> ", node_2, ": E = ", E, ", rho = ", rho, ", v = ", v, ", h = ", h)
-        println("Evaluated without error.\n")
+        println("\nEvaluated without error.\n")
     end
 
     return K1g, K2g, K3g, Mg
