@@ -79,7 +79,6 @@ end
 K2g_hat = real(1im*T'*K2g*T)
 f_ax = (0.00001:0.00001:0.06)*1e6
 k_save = zeros(2*n_DOF,length(f_ax))*(0+0im)
-# Phi_eig_save = zeros(2*n_DOF,2*n_DOF,length(f_ax))*(0+0im)
 
 for (i_freq,freq) in enumerate(f_ax)
     @printf "Current progress: %.2f%%\n" i_freq/length(f_ax)*100
