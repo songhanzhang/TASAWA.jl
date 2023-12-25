@@ -79,6 +79,7 @@ end
 K2g_hat = real(1im*T'*K2g*T)
 f_ax = (0.00001:0.00001:0.06)*1e6
 k_save = zeros(2*n_DOF,length(f_ax))*(0+0im)
+Ψ_save = zeros(2*n_DOF, 2*n_DOF, length(f_ax))*(0+0im)
 
 for (i_freq,freq) in enumerate(f_ax)
     @printf "Current progress: %.2f%%\n" i_freq/length(f_ax)*100
@@ -89,6 +90,7 @@ for (i_freq,freq) in enumerate(f_ax)
              zeros(n_DOF,n_DOF)  -K1g]
     (Lambda_eig,Phi_eig) = eigen(A_eig,B_eig)
     k_save[:,i_freq] = Lambda_eig
+    Ψ_save[:,:,i_freq] = Phi_eig
 end
 (k_real, k_imag, k_cplx) = div_k_types(k_save,1e-3)
 
@@ -126,3 +128,22 @@ plot!(xlims = (-30,60), ylims = (0,0.35))
 xlabel!("k (m⁻¹)")
 ylabel!("ω (10⁶ rad/s)")
 savefig("/Users/songhan.zhang/Documents/Julia/2023-Julia-v1205-SAFE/kw.png")
+
+plot!(xlims = (22.5,25.5), ylims = (0.272,0.273))
+f_ax[4340]/1e6*2*pi
+k_save[60,4340]
+
+Q = Ψ_save[1:39,60,4340]
+
+m = real(Q'*Mg*Q)
+k1 = real(Q'*K1g*Q)
+k2 = real(Q'*K2g_hat*Q)
+k3 = real(Q'*K3g*Q)
+
+-k2/2/k1
+
+k = k_save[60,4340]
+ω = sqrt((k^2*k1 + k*k2 + k3)/(m))/1e6
+
+ω = f_ax[4340]*2*pi
+(-ω^2*Mg + K3g + k*K2g_hat + k^2*K1g)*Q
