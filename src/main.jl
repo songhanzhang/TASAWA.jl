@@ -28,8 +28,8 @@ end
 work_path = "/Users/songhan.zhang/Documents/Julia/2023-Julia-v1205-SAFE/"
 
 Nodes = [
-    1  0  0
-    2  0.05  0
+    1  0.00  0.00
+    2  0.05  0.00
     3  0.05*cos(pi/4)  0.05*sin(pi/4)
     4  0.05*cos(2*pi/4)  0.05*sin(2*pi/4)
     5  0.05*cos(3*pi/4)  0.05*sin(3*pi/4)
