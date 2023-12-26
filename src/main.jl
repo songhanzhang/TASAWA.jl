@@ -130,6 +130,7 @@ ylabel!("ω (10⁶ rad/s)")
 savefig("/Users/songhan.zhang/Documents/Julia/2023-Julia-v1205-SAFE/kw.png")
 
 plot!(xlims = (22.5,25.5), ylims = (0.272,0.273))
+
 f_ax[4340]/1e6*2*pi
 k_save[60,4340]
 
@@ -140,10 +141,12 @@ k1 = real(Q'*K1g*Q)
 k2 = real(Q'*K2g_hat*Q)
 k3 = real(Q'*K3g*Q)
 
--k2/2/k1
+k_peak = -k2/2/k1
+
+
 
 k = k_save[60,4340]
-ω = sqrt((k^2*k1 + k*k2 + k3)/(m))/1e6
+ω_peak = sqrt((k_peak^2*k1 + k_peak*k2 + k3)/(m))/1e6
 
 ω = f_ax[4340]*2*pi
 (-ω^2*Mg + K3g + k*K2g_hat + k^2*K1g)*Q
