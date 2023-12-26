@@ -136,10 +136,10 @@ k_save[60,4340]
 
 Q = Ψ_save[1:39,60,4340]
 
-m = real(Q'*Mg*Q)
-k1 = real(Q'*K1g*Q)
-k2 = real(Q'*K2g_hat*Q)
-k3 = real(Q'*K3g*Q)
+m = real(transpose(Q)*Mg*Q)
+k1 = real(transpose(Q)*K1g*Q)
+k2 = real(transpose(Q)*K2g_hat*Q)
+k3 = real(transpose(Q)*K3g*Q)
 
 k_peak = -k2/2/k1
 
