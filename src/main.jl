@@ -83,10 +83,10 @@ k_save = zeros(2*n_DOF,length(f_ax))*(0+0im)
 
 for (i_freq,freq) in enumerate(f_ax)
     @printf "Current progress: %.2f%%\n" i_freq/length(f_ax)*100
-    omega = 2*pi*freq
-    A_eig = [zeros(n_DOF,n_DOF)  K3g-omega^2*Mg
-             K3g-omega^2*Mg        K2g_hat]
-    B_eig = [K3g-omega^2*Mg        zeros(n_DOF,n_DOF)
+    ω = 2*pi*freq
+    A_eig = [zeros(n_DOF,n_DOF)  K3g-ω^2*Mg
+             K3g-ω^2*Mg        K2g_hat]
+    B_eig = [K3g-ω^2*Mg        zeros(n_DOF,n_DOF)
              zeros(n_DOF,n_DOF)  -K1g]
     (Lambda_eig,Phi_eig) = eigen(A_eig,B_eig)
     k_save[:,i_freq] = Lambda_eig
