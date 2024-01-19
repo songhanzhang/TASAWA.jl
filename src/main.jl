@@ -88,8 +88,8 @@ for (i_freq,freq) in enumerate(f_ax)
              K3g-ω^2*Mg        K2g_hat]
     B_eig = [K3g-ω^2*Mg        zeros(n_DOF,n_DOF)
              zeros(n_DOF,n_DOF)  -K1g]
-    (Lambda_eig,Phi_eig) = eigen(A_eig,B_eig)
-    k_save[:,i_freq] = Lambda_eig
+    (Λ,Phi_eig) = eigen(A_eig,B_eig)
+    k_save[:,i_freq] = Λ
     Ψ_save[:,:,i_freq] = Phi_eig
 end
 (k_real, k_imag, k_cplx) = div_k_types(k_save,1e-3)
