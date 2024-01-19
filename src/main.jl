@@ -92,7 +92,7 @@ for (i_freq,freq) in enumerate(f_ax)
     k_save[:,i_freq] = Λ
     Ψ_save[:,:,i_freq] = Φ
 end
-(k_real, k_imag, k_cplx) = div_k_types(k_save,1e-3)
+(k_real, k_imag, k_cplx) = div_k_types(k_save, tol = 1e-3)
 
 fig_kw = plot(
     size = (600,700),
