@@ -1,4 +1,4 @@
-function div_k_types(k_save, tol)
+function div_k_types(k_save; tol = 1e-6)
 
     k_real = zeros(size(k_save))*NaN
     k_imag = zeros(size(k_save))*NaN
