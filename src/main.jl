@@ -127,7 +127,7 @@ plot!(
 plot!(xlims = (-30,60), ylims = (0,0.35))
 xlabel!("k (m⁻¹)")
 ylabel!("ω (10⁶ rad/s)")
-savefig("/Users/songhan.zhang/Documents/Julia/2023-Julia-v1205-SAFE/kw.png")
+savefig(string(work_path, "fig_kw.pdf"))
 
 plot!(xlims = (22.5,25.5), ylims = (0.272,0.273))
 
