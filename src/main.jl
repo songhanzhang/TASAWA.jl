@@ -132,7 +132,7 @@ k3 = real(transpose(Q)*K3g*Q)
 
 k_peak = -k2/2/k1
 
-k = k_save[60,4340]
+k = k_save[i_mode,i_freq]
 ω_peak = sqrt((k_peak^2*k1 + k_peak*k2 + k3)/(m))/1e6
 
 ω = f_ax[4340]*2*pi
