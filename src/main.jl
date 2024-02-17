@@ -118,10 +118,12 @@ savefig(string(work_path, "fig_kw.pdf"))
 
 # plot!(xlims = (22.5,25.5), ylims = (0.272,0.273))
 
-f_ax[4340]/1e6*2*pi
-k_save[60,4340]
+i_freq = 4340
+i_mode = 60
+ω_sel = f_ax[i_freq]*2*pi
+k_save[i_mode,i_f]
 
-Q = Ψ_save[1:39,60,4340]
+Q = Ψ_save[1:39,i_mode,i_freq]
 
 m = real(transpose(Q)*Mg*Q)
 k1 = real(transpose(Q)*K1g*Q)
