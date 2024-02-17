@@ -116,7 +116,7 @@ xlabel!("k (m⁻¹)")
 ylabel!("ω (10⁶ rad/s)")
 savefig(string(work_path, "fig_kw.pdf"))
 
-plot!(xlims = (22.5,25.5), ylims = (0.272,0.273))
+# plot!(xlims = (22.5,25.5), ylims = (0.272,0.273))
 
 f_ax[4340]/1e6*2*pi
 k_save[60,4340]
