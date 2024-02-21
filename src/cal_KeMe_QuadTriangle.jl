@@ -107,7 +107,7 @@ function cal_KeMe_QuadraticTriangular(x,y,E,ρ,ν)
         K1e += B1'*L'*C*L*B1*abs(det(J))*H
         K2e += (B2'*L'*C*L*B1 - B1'*L'*C*L*B2)*abs(det(J))*H
         K3e += B2'*L'*C*L*B2*abs(det(J))*H
-        Me += ρ*transpose(N)*N*abs(det(J))*H
+        Me  += ρ*transpose(N)*N*abs(det(J))*H
         if det(J) < 0
             println(string("\nAttension: Negative Jacobian for element ", i_e))
         end
