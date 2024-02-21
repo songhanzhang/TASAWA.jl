@@ -51,7 +51,7 @@ function cal_KeMe_QuadraticTriangular(x,y,E,ρ,ν)
     K1e = zeros(18,18)
     K2e = zeros(18,18)
     K3e = zeros(18,18)
-    Me = zeros(18,18)
+    Me  = zeros(18,18)
 
     Gauss = [ 0.0915762135  0.8168475730  0.1099517437
               0.0915762135  0.0915762135  0.1099517437
