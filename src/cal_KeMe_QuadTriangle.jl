@@ -34,10 +34,10 @@ function cal_KeMe_QuadraticTriangular(x,y,E,ρ,ν)
     c23 = λ
     c44 = μ
 
-    C = [ c11 c12 c13 0 0 0
-          c12 c22 c23 0 0 0
-          c13 c23 c33 0 0 0
-          0   0   0   c44 0 0
+    C = [ c11 c12 c13 0   0   0
+          c12 c22 c23 0   0   0
+          c13 c23 c33 0   0   0
+          0   0   0   c44 0   0
           0   0   0   0   c44 0
           0   0   0   0   0   c44 ]
 
