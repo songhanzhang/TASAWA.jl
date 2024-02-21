@@ -109,7 +109,7 @@ function cal_KeMe_QuadraticTriangular(x,y,E,ρ,ν)
         K3e += B2'*L'*C*L*B2*abs(det(J))*H
         Me  += ρ*transpose(N)*N*abs(det(J))*H
         if det(J) < 0
-            println(string("\nAttension: Negative Jacobian for element ", i_e))
+            println(string("Attension: Negative Jacobian for element ", i_e, " at ", i_Gauss, " Gauss point!"))
         end
     end
 
