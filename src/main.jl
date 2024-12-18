@@ -46,13 +46,13 @@ n_nodes = size(Nodes,1)
 
 Elements = [
     1  "2D_QuadTriangle"  1  1  (1, 2, 4, 10, 3, 11)
-    2  "2D_QuadTriangle"  1  1  (1, 4, 6, 11, 5, 12)
-    3  "2D_QuadTriangle"  1  1  (1, 6, 8, 12, 7, 13)
-    4  "2D_QuadTriangle"  1  1  (1, 8, 2, 13, 9, 10)
+    # 2  "2D_QuadTriangle"  1  1  (1, 4, 6, 11, 5, 12)
+    # 3  "2D_QuadTriangle"  1  1  (1, 6, 8, 12, 7, 13)
+    # 4  "2D_QuadTriangle"  1  1  (1, 8, 2, 13, 9, 10)
 ]
 n_elements = size(Elements,1)
 
-Materials = [ 1  (2e11, 7850, 0.3) ]
+Materials = [ 1  (2e11, 7800, 0.33) ]
 Reals = [ 1  (1) ]
 
 fig_model = plot(
